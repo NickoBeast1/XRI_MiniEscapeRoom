@@ -9,12 +9,16 @@ public class DoorTriggerZone : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+
         if (lockOnEnter) door.CloseAndLock();
         else if (openOnEnter) door.Open();
     }
 
     void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+
         if (closeOnExit) door.Close();
     }
 }
